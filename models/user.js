@@ -13,12 +13,12 @@ const UserSachema = new Schema({
     },
     about:String,
     profileURL:String,
-    address:{
-        street:String,
-        city:String,
-        country:String,
-        pinCode:Number,
-    }
+    // address:{
+    //     street:String,
+    //     city:String,
+    //     country:String,
+    //     pinCode:Number,
+    // }
 
 })
 
