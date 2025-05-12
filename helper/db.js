@@ -11,15 +11,15 @@ export const connectDb = async () => {
 
         // testing and create new user
 
-       const uuser =  new User({
-            name:"testing user",
-            email:"testing@gmail.com",
-            password:"12345",
-            about:"this is testing"
-        })
+    //    const uuser =  new User({
+    //         name:"testing user",
+    //         email:"testing@gmail.com",
+    //         password:"12345",
+    //         about:"this is testing"
+    //     })
 
-        await uuser.save();
-        console.log('user is created')
+    //     await uuser.save();
+    //     console.log('user is created')
 
     }
     catch (error) {

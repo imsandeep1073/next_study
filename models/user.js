@@ -5,6 +5,7 @@ const UserSachema = new Schema({
     name: String,
     email: {
         type: String,
+        unique:true,
         required: [true, "Email Required !!"],
     },
     password: {

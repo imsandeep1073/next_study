@@ -31,33 +31,51 @@ export async function POST(request) {
     }
 }
 
-export function GET(request) {
-    const users = [
-        {
-            id: 1,
-            name: "John Doe",
-            email: "johndoe@gmail.com"
-        },
-        {
-            id: 2,
-            name: "Man Doe",
-            email: "mandoe@gmail.com"
-        }
-    ]
+// export function GET(request) {
+//     const users = [
+//         {
+//             id: 1,
+//             name: "John Doe",
+//             email: "johndoe@gmail.com"
+//         },
+//         {
+//             id: 2,
+//             name: "Man Doe",
+//             email: "mandoe@gmail.com"
+//         }
+//     ]
+//     return NextResponse.json(users);
+// }
 
-    return NextResponse.json(users);
+
+export async function GET(request) {
+    let users = [];
+    try {
+        users = await User.find().select("-password"); //.select("-password"); this use to hide password in db or other quary
+    } catch (error) {
+        console.log(error);
+        return NextResponse.json({
+            massage: "failed to fetch user !!",
+            status: false,
+        })
+    }
+
+    return NextResponse.json(users)
 }
 
-export function DELETE(request) {
-    console.log("Delete api called");
-    return NextResponse.json({
-        massage: "user deleted successfully",
-        status: true
-    }, {
-        status: 200,
-        statusText: "hey change text"
-    })
-}
+// export function DELETE(request) {
+//     console.log("Delete api called");
+//     return NextResponse.json({
+//         massage: "user deleted successfully",
+//         status: true
+//     }, {
+//         status: 200,
+//         statusText: "hey change text"
+//     })
+// }
+
+
+
 
 // export function POST(request) {
 //     const body = request.body
