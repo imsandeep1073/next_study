@@ -17,8 +17,7 @@ export async function GET(request, { params }) {
 
 // update single task
 
-export async function PUT(request, { params }) {  
-
+export async function PUT(request, { params }) {
     try {
         const { taskId } = params;
         const { title, content, status } = await request.json();
@@ -28,8 +27,6 @@ export async function PUT(request, { params }) {
             task.status = status;
         const updateTask = await task.save();
         return NextResponse.json(updateTask)
-
-
     } catch (error) {
         console.log(error);
         return getResponseMessage("Error in Updating Task !!", 500, false);
@@ -61,9 +58,22 @@ export async function PUT(request, { params }) {
 // }
 
 // Delter single task
-export async function DELETE(request, {params}){
-    const {taskId}= params;
-    
+export async function DELETE(request, { params }) {
+    const { taskId } = params;
+    try {
+       const deletetsk = await Task.deleteOne({
+            _id: taskId,
+        })
+        // const updateTask = await task.save();
+        return NextResponse.json(deletetsk)
+        // return getResponseMessage("Deleted task !!", 200, true)
+
+    } catch (error) {
+        console.log(error);
+        return getResponseMessage("Failed to Deleted task !!", 500, false)
+
+    }
+
 
 }
 

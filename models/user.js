@@ -5,15 +5,16 @@ const UserSachema = new Schema({
     name: String,
     email: {
         type: String,
-        unique:true,
+        unique: true,
+        lowercase: true,
         required: [true, "Email Required !!"],
     },
     password: {
         type: String,
-        required: [true,"Password Required !!"],        
+        required: [true, "Password Required !!"],
     },
-    about:String,
-    profileURL:String,
+    about: String,
+    profileURL: String,
     // address:{
     //     street:String,
     //     city:String,
@@ -23,4 +24,4 @@ const UserSachema = new Schema({
 
 })
 
-export const User =mongoose.models.users || mongoose.model("users", UserSachema);
+export const User = mongoose.models.users || mongoose.model("users", UserSachema);
